@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { MenuItem } from '../../types';
 import { Card, CardHeader } from '../ui/Card';
+import { MenuItemImage } from '../ui/MenuItemImage';
 
 function fmtUSD(n: number | undefined) {
   if (typeof n !== 'number') return undefined;
@@ -26,26 +27,34 @@ export function FeaturedMenu({ items }: { items: MenuItem[] }) {
             {list.map((item) => (
               <Card key={item.id}>
                 <CardHeader>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="text-lg font-medium">{item.name}</div>
-                      {item.description && <div className="text-sm text-white/80">{item.description}</div>}
-                    </div>
-                    <div className="shrink-0 text-right text-sm text-white/90">
-                      <div>
-                        {(() => {
-                          const prices = [item.prices?.doordash, item.prices?.grubhub].filter((n): n is number => typeof n === 'number');
-                          const unified = prices.length ? Math.min(...prices) : undefined;
-                          return fmtUSD(unified) ?? '—';
-                        })()}
+                  <div className="flex items-start gap-4">
+                    {item.image && <MenuItemImage src={item.image} alt={item.name} />}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="min-w-0">
+                          <div className="truncate text-lg font-medium" title={item.name}>
+                            {item.name}
+                          </div>
+                          {item.description && (
+                            <div className="text-sm text-white/80">{item.description}</div>
+                          )}
+                        </div>
+                        <div className="shrink-0 text-right text-sm text-white/90">
+                          <div>
+                            {(() => {
+                              const prices = [item.prices?.doordash, item.prices?.grubhub].filter(
+                                (n): n is number => typeof n === 'number'
+                              );
+                              const unified = prices.length ? Math.min(...prices) : undefined;
+                              return fmtUSD(unified) ?? '—';
+                            })()}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </CardHeader>
                 {/* Intentionally no per-item ordering buttons */}
-                {/* <CardFooter>
-                  Prices set by platform • Last checked: {item.lastChecked ?? '—'}
-                </CardFooter> */}
               </Card>
             ))}
           </div>
@@ -54,3 +63,4 @@ export function FeaturedMenu({ items }: { items: MenuItem[] }) {
     </section>
   );
 }
+
