@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { MenuItem } from '../../types';
-import { Card, CardContent, CardFooter, CardHeader } from '../ui/Card';
+import { Card, CardContent, CardHeader } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { Tooltip } from '../ui/Tooltip';
 
@@ -9,9 +9,9 @@ function fmtUSD(n: number | undefined) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
 }
 
-function PlatformButtons({ item }: { item: MenuItem }) {
-  const dd = item.orderLinks?.doordash;
-  const gh = item.orderLinks?.grubhub;
+function PlatformButtons({ item, fallbackDd, fallbackGh }: { item: MenuItem; fallbackDd?: string; fallbackGh?: string }) {
+  const dd = fallbackDd ?? item.orderLinks?.doordash;
+  const gh = fallbackGh ?? item.orderLinks?.grubhub;
   return (
     <div className="flex gap-2">
       {dd ? (
@@ -48,7 +48,7 @@ function PlatformButtons({ item }: { item: MenuItem }) {
   );
 }
 
-export function FeaturedMenu({ items }: { items: MenuItem[] }) {
+export function FeaturedMenu({ items, doordashUrl, grubhubUrl }: { items: MenuItem[]; doordashUrl?: string; grubhubUrl?: string }) {
   const active = items.filter((i) => i.isActive !== false);
   const byCategory = active.reduce<Record<string, MenuItem[]>>((acc, item) => {
     (acc[item.category] ||= []).push(item);
@@ -82,11 +82,11 @@ export function FeaturedMenu({ items }: { items: MenuItem[] }) {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <PlatformButtons item={item} />
+                  <PlatformButtons item={item} fallbackDd={doordashUrl} fallbackGh={grubhubUrl} />
                 </CardContent>
-                <CardFooter>
+                {/* <CardFooter>
                   Prices set by platform • Last checked: {item.lastChecked ?? '—'}
-                </CardFooter>
+                </CardFooter> */}
               </Card>
             ))}
           </div>

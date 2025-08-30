@@ -17,7 +17,7 @@ export function RestaurantJSONLD({ name, address, phone, hours, sameAs }: { name
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-export function MenuJSONLD({ sections }: { sections: Array<{ name: string; items: any[] }> }) {
+export function MenuJSONLD({ sections, doordashUrl, grubhubUrl }: { sections: Array<{ name: string; items: any[] }>; doordashUrl?: string; grubhubUrl?: string }) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Menu',
@@ -30,11 +30,11 @@ export function MenuJSONLD({ sections }: { sections: Array<{ name: string; items
         description: i.description,
         image: i.image,
         offers: [
-          i.prices?.doordash && i.orderLinks?.doordash
-            ? { '@type': 'Offer', priceCurrency: 'USD', price: i.prices.doordash, url: i.orderLinks.doordash }
+          i.prices?.doordash && (doordashUrl || i.orderLinks?.doordash)
+            ? { '@type': 'Offer', priceCurrency: 'USD', price: i.prices.doordash, url: doordashUrl || i.orderLinks?.doordash }
             : null,
-          i.prices?.grubhub && i.orderLinks?.grubhub
-            ? { '@type': 'Offer', priceCurrency: 'USD', price: i.prices.grubhub, url: i.orderLinks.grubhub }
+          i.prices?.grubhub && (grubhubUrl || i.orderLinks?.grubhub)
+            ? { '@type': 'Offer', priceCurrency: 'USD', price: i.prices.grubhub, url: grubhubUrl || i.orderLinks?.grubhub }
             : null
         ].filter(Boolean)
       }))
@@ -42,4 +42,3 @@ export function MenuJSONLD({ sections }: { sections: Array<{ name: string; items
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
-

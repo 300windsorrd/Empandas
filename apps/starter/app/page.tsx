@@ -1,4 +1,5 @@
 import TheseFreakinEmpanadas from 'these-freakin-empanadas';
+import heroImages from '../public/data/hero.json';
 import { RestaurantJSONLD, MenuJSONLD } from '@/src/lib/seo';
 
 export default async function HomePage() {
@@ -24,7 +25,11 @@ export default async function HomePage() {
   const sectionArray = Object.entries(sections).map(([name, items]) => ({ name, items }));
   return (
     <>
-      <TheseFreakinEmpanadas />
+      <TheseFreakinEmpanadas
+        heroImages={heroImages as any}
+        doordashUrl={settings ? JSON.parse(settings.platformBaseUrlsJson || '{}')['doordash'] : undefined}
+        grubhubUrl={settings ? JSON.parse(settings.platformBaseUrlsJson || '{}')['grubhub'] : undefined}
+      />
       {settings && (
         <RestaurantJSONLD
           name="These Freakin’ Empanadas & More"
@@ -39,7 +44,11 @@ export default async function HomePage() {
           ]}
         />
       )}
-      <MenuJSONLD sections={sectionArray} />
+      <MenuJSONLD
+        sections={sectionArray}
+        doordashUrl={settings ? JSON.parse(settings.platformBaseUrlsJson || '{}')['doordash'] : undefined}
+        grubhubUrl={settings ? JSON.parse(settings.platformBaseUrlsJson || '{}')['grubhub'] : undefined}
+      />
     </>
   );
 }

@@ -46,7 +46,14 @@ export function Header({ restaurantName, doordashUrl, grubhubUrl }: Props) {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/70 backdrop-blur supports-[backdrop-filter]:bg-black/40">
       <div className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <div className="text-lg font-semibold">{restaurantName}</div>
+        <a href="/" className="flex items-center gap-3">
+          <img
+            src="/images/Logo.png"
+            alt={`${restaurantName} logo`}
+            className="h-8 w-auto"
+          />
+          <span className="text-lg font-semibold hidden sm:inline">{restaurantName}</span>
+        </a>
 
         {/* Desktop nav */}
         <nav className="hidden gap-6 md:flex">

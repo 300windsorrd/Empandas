@@ -29,8 +29,8 @@ import { Reviews } from './components/sections/Reviews';
 import { OrderNowBanner } from './components/sections/OrderNowBanner';
 import { Footer } from './components/sections/Footer';
 
-const DEFAULT_DD = 'https://www.doordash.com/store/these-freakin-empanadas-and-more/';
-const DEFAULT_GH = 'https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/';
+const DEFAULT_DD = 'https://www.doordash.com/store/these-freakin-empanadas-and-more-wood-ridge-34379601/?srsltid=AfmBOop7RQWjGGjS_ozZrRP0mAFSNaHmv2phAm0y5CY9PepFgB4OLzIp';
+const DEFAULT_GH = 'https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more-251-b-valley-blvd-wood-ridge/11509544';
 
 export default function TheseFreakinEmpanadas({
   restaurantName = 'These Freakin\u2019 Empanadas & More',
@@ -61,7 +61,7 @@ export default function TheseFreakinEmpanadas({
       <Header restaurantName={restaurantName} doordashUrl={doordashUrl} grubhubUrl={grubhubUrl} />
       <main>
         <Hero images={images} doordashUrl={doordashUrl} grubhubUrl={grubhubUrl} />
-        <FeaturedMenu items={items} />
+        <FeaturedMenu items={items} doordashUrl={doordashUrl} grubhubUrl={grubhubUrl} />
         <About address={restaurantAddress} phone={restaurantPhone} hours={restaurantHours} />
         <Reviews
           reviews={[

@@ -57,8 +57,8 @@ async function main() {
         Mon: { closed: true }
       }),
       platformBaseUrlsJson: JSON.stringify({
-        doordash: 'https://www.doordash.com/store/these-freakin-empanadas-and-more/',
-        grubhub: 'https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/'
+        doordash: 'https://www.doordash.com/store/these-freakin-empanadas-and-more-wood-ridge-34379601/?srsltid=AfmBOop7RQWjGGjS_ozZrRP0mAFSNaHmv2phAm0y5CY9PepFgB4OLzIp',
+        grubhub: 'https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more-251-b-valley-blvd-wood-ridge/11509544'
       }),
       ctaTogglesJson: JSON.stringify({ doordash: true, grubhub: true })
     }
