@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button } from '../ui/Button';
+import { VariableProximity } from '../animations/VariableProximity';
 
 type Props = {
   restaurantName: string;
@@ -10,6 +11,7 @@ type Props = {
 export function Header({ restaurantName, doordashUrl, grubhubUrl }: Props) {
   const [open, setOpen] = React.useState(false);
   const [show, setShow] = React.useState(false); // mount drawer only when true
+  const brandContainerRef = React.useRef<HTMLAnchorElement | null>(null);
 
   const closeMenu = React.useCallback(() => {
     setOpen(false);
@@ -46,13 +48,23 @@ export function Header({ restaurantName, doordashUrl, grubhubUrl }: Props) {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/70 backdrop-blur supports-[backdrop-filter]:bg-black/40">
       <div className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <a href="/" className="flex items-center gap-3">
+        <a ref={brandContainerRef} href="/" className="flex items-center gap-3">
           <img
             src="/images/Logo.png"
             alt={`${restaurantName} logo`}
             className="h-8 w-auto"
           />
-          <span className="text-lg font-semibold hidden sm:inline">{restaurantName}</span>
+          <VariableProximity
+            className="text-lg font-semibold hidden sm:inline"
+            label={restaurantName}
+            containerRef={brandContainerRef}
+            // Use variable font axis available in Source Sans 3 (loaded globally)
+            fromFontVariationSettings="'wght' 500"
+            toFontVariationSettings="'wght' 800"
+            radius={80}
+            falloff="exponential"
+            aria-label={restaurantName}
+          />
         </a>
 
         {/* Desktop nav */}

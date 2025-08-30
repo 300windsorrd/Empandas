@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { HeroCarousel } from './HeroCarousel';
 import type { HeroImage } from '../../types';
+import { TextType } from '../animations/TextType';
 
 type Props = {
   images: HeroImage[];
@@ -15,9 +16,18 @@ export function Hero({ images, doordashUrl, grubhubUrl }: Props) {
     <section className="relative mx-auto max-w-6xl px-4 pt-6">
       <HeroCarousel images={images} />
       <div className="mt-6 flex flex-col items-start gap-3 md:absolute md:inset-0 md:left-8 md:top-1/3 md:mt-0">
-        <motion.h1 className="text-3xl font-semibold md:text-5xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-          Bold, Crispy, Freakin’ Delicious.
-        </motion.h1>
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+          <TextType
+            as="h1"
+            className="text-3xl font-semibold md:text-5xl"
+            text={"Bold, Crispy, Freakin’ Delicious."}
+            typingSpeed={45}
+            initialDelay={200}
+            loop={false}
+            showCursor={true}
+            hideCursorWhileTyping={false}
+          />
+        </motion.div>
         <motion.p className="max-w-xl text-white/80" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
           Hand-held flavor bombs—savory & sweet empanadas, sandwiches, and sides.
         </motion.p>
