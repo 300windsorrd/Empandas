@@ -25,7 +25,7 @@ export function Hero({ images, doordashUrl, grubhubUrl }: Props) {
           <div className="inline-flex overflow-hidden rounded-md border border-white/20">
             <a href={doordashUrl} target="_blank" rel="noreferrer">
               <Button className="rounded-none">
-                <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto" />
+                <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto scale-125" />
               </Button>
             </a>
             <a href={grubhubUrl} target="_blank" rel="noreferrer">

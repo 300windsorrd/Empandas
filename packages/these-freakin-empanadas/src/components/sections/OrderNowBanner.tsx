@@ -11,7 +11,7 @@ export function OrderNowBanner({ doordashUrl, grubhubUrl, phone }: Props) {
         <div className="flex flex-wrap items-center gap-2">
           <a href={doordashUrl} target="_blank" rel="noreferrer">
             <Button>
-              <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto" />
+              <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto scale-125" />
             </Button>
           </a>
           <a href={grubhubUrl} target="_blank" rel="noreferrer">

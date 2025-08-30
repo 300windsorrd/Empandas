@@ -17,14 +17,14 @@ function PlatformButtons({ item }: { item: MenuItem }) {
       {dd ? (
         <a href={dd} target="_blank" rel="noreferrer">
           <Button>
-            <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto" />
+            <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto scale-125" />
           </Button>
         </a>
       ) : (
         <Tooltip content="Temporarily unavailable">
           <span>
             <Button disabled>
-              <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto" />
+              <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto scale-125" />
             </Button>
           </span>
         </Tooltip>
@@ -72,7 +72,11 @@ export function FeaturedMenu({ items }: { items: MenuItem[] }) {
                     </div>
                     <div className="shrink-0 text-right text-sm text-white/90">
                       <div>
-                        DoorDash {fmtUSD(item.prices?.doordash) ?? '—'} · Grubhub {fmtUSD(item.prices?.grubhub) ?? '—'}
+                        {(() => {
+                          const prices = [item.prices?.doordash, item.prices?.grubhub].filter((n): n is number => typeof n === 'number');
+                          const unified = prices.length ? Math.min(...prices) : undefined;
+                          return fmtUSD(unified) ?? '—';
+                        })()}
                       </div>
                     </div>
                   </div>
