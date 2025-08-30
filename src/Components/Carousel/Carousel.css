@@ -6,7 +6,7 @@
   position: relative;
   overflow: hidden;
   /* Configurable border for the outer carousel container */
-  --carousel-border-width: 2px;
+  --carousel-border-width: 11px;
   --carousel-border-color: #fff;
   border: var(--carousel-border-width) solid var(--carousel-border-color);
   border-radius: 24px;
