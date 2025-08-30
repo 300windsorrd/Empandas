@@ -61,7 +61,7 @@ export default function TheseFreakinEmpanadas({
       <Header restaurantName={restaurantName} doordashUrl={doordashUrl} grubhubUrl={grubhubUrl} />
       <main>
         <Hero images={images} doordashUrl={doordashUrl} grubhubUrl={grubhubUrl} />
-        <FeaturedMenu items={items} doordashUrl={doordashUrl} grubhubUrl={grubhubUrl} />
+        <FeaturedMenu items={items} />
         <About address={restaurantAddress} phone={restaurantPhone} hours={restaurantHours} />
         <Reviews
           reviews={[
