@@ -28,14 +28,17 @@ export function Header({ restaurantName, doordashUrl, grubhubUrl }: Props) {
         </nav>
         <div className="hidden items-center gap-2 md:flex">
           <a href={doordashUrl} target="_blank" rel="noreferrer">
-            <Button>Order on DoorDash</Button>
+            <Button>
+              <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto" />
+            </Button>
           </a>
           <a href={grubhubUrl} target="_blank" rel="noreferrer">
-            <Button variant="secondary">Order on Grubhub</Button>
+            <Button variant="secondary">
+              <img src="/images/Grubhub.png" alt="Order on Grubhub" className="h-6 w-auto" />
+            </Button>
           </a>
         </div>
       </div>
     </header>
   );
 }
-

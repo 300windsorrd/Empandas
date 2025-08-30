@@ -10,10 +10,14 @@ export function OrderNowBanner({ doordashUrl, grubhubUrl, phone }: Props) {
         <div className="text-lg font-medium">Order Now</div>
         <div className="flex flex-wrap items-center gap-2">
           <a href={doordashUrl} target="_blank" rel="noreferrer">
-            <Button>Order on DoorDash</Button>
+            <Button>
+              <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto" />
+            </Button>
           </a>
           <a href={grubhubUrl} target="_blank" rel="noreferrer">
-            <Button variant="secondary">Order on Grubhub</Button>
+            <Button variant="secondary">
+              <img src="/images/Grubhub.png" alt="Order on Grubhub" className="h-6 w-auto" />
+            </Button>
           </a>
           <a href={`tel:${phone}`}>
             <Button variant="outline">Call {phone}</Button>
@@ -23,4 +27,3 @@ export function OrderNowBanner({ doordashUrl, grubhubUrl, phone }: Props) {
     </section>
   );
 }
-

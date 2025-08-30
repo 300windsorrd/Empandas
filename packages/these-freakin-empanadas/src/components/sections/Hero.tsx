@@ -24,11 +24,13 @@ export function Hero({ images, doordashUrl, grubhubUrl }: Props) {
         <div className="mt-2 flex flex-wrap gap-2">
           <div className="inline-flex overflow-hidden rounded-md border border-white/20">
             <a href={doordashUrl} target="_blank" rel="noreferrer">
-              <Button className="rounded-none">DoorDash</Button>
+              <Button className="rounded-none">
+                <img src="/images/DoorDash.png" alt="Order on DoorDash" className="h-6 w-auto" />
+              </Button>
             </a>
             <a href={grubhubUrl} target="_blank" rel="noreferrer">
               <Button variant="secondary" className="rounded-none border-l border-white/20">
-                Grubhub
+                <img src="/images/Grubhub.png" alt="Order on Grubhub" className="h-6 w-auto" />
               </Button>
             </a>
           </div>
