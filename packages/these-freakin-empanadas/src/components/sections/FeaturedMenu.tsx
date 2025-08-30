@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { MenuItem } from '../../types';
-import { Card, CardHeader } from '../ui/Card';
+import { Card } from '../ui/Card';
 import { MenuItemImage } from '../ui/MenuItemImage';
 
 function fmtUSD(n: number | undefined) {
@@ -26,35 +26,34 @@ export function FeaturedMenu({ items }: { items: MenuItem[] }) {
             <h3 className="text-xl font-medium">{category}</h3>
             {list.map((item) => (
               <Card key={item.id}>
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    {item.image && <MenuItemImage src={item.image} alt={item.name} />}
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="min-w-0">
-                          <div className="truncate text-lg font-medium" title={item.name}>
-                            {item.name}
-                          </div>
-                          {item.description && (
-                            <div className="text-sm text-white/80">{item.description}</div>
-                          )}
-                        </div>
-                        <div className="shrink-0 text-right text-sm text-white/90">
-                          <div>
-                            {(() => {
-                              const prices = [item.prices?.doordash, item.prices?.grubhub].filter(
-                                (n): n is number => typeof n === 'number'
-                              );
-                              const unified = prices.length ? Math.min(...prices) : undefined;
-                              return fmtUSD(unified) ?? '—';
-                            })()}
-                          </div>
-                        </div>
-                      </div>
+                <div className="relative">
+                  <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 overflow-hidden rounded-md border border-white/20">
+                    {item.image ? (
+                      <MenuItemImage
+                        src={item.image}
+                        alt={item.name}
+                        variant="fluid"
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-white/[0.06]" />
+                    )}
+                    {/* Price top-left */}
+                    <div className="absolute left-2 top-2 rounded bg-black/60 px-2 py-1 text-xs font-medium text-white">
+                      {(() => {
+                        const prices = [item.prices?.doordash, item.prices?.grubhub].filter(
+                          (n): n is number => typeof n === 'number'
+                        );
+                        const unified = prices.length ? Math.min(...prices) : undefined;
+                        return fmtUSD(unified) ?? '';
+                      })()}
+                    </div>
+                    {/* Name bottom-right */}
+                    <div className="absolute bottom-2 right-2 max-w-[80%] truncate rounded bg-black/60 px-2 py-1 text-sm font-semibold text-white shadow">
+                      {item.name}
                     </div>
                   </div>
-                </CardHeader>
-                {/* Intentionally no per-item ordering buttons */}
+                </div>
               </Card>
             ))}
           </div>
@@ -63,4 +62,3 @@ export function FeaturedMenu({ items }: { items: MenuItem[] }) {
     </section>
   );
 }
-
