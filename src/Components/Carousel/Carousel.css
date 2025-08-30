@@ -5,7 +5,10 @@
 .carousel-container {
   position: relative;
   overflow: hidden;
-  border: 1px solid #555;
+  /* Configurable border for the outer carousel container */
+  --carousel-border-width: 2px;
+  --carousel-border-color: #fff;
+  border: var(--carousel-border-width) solid var(--carousel-border-color);
   border-radius: 24px;
   padding: 16px;
   --outer-r: 24px;
@@ -35,7 +38,7 @@
 }
 
 .carousel-container.round {
-  border: 1px solid #555;
+  border: var(--carousel-border-width) solid var(--carousel-border-color);
 }
 
 .carousel-item.round {

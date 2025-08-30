@@ -2,9 +2,9 @@
 import * as React from 'react';
 import type { HeroImage } from '../../types';
 
-type Props = { images: HeroImage[] };
+type Props = { images: HeroImage[]; className?: string };
 
-export function HeroCarousel({ images }: Props) {
+export function HeroCarousel({ images, className }: Props) {
   const [index, setIndex] = React.useState(0);
   const id = React.useId();
   React.useEffect(() => {
@@ -17,7 +17,13 @@ export function HeroCarousel({ images }: Props) {
   if (!images.length) return null;
   const curr = images[index];
   return (
-    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg md:aspect-[16/9]">
+    <div
+      className={
+        `relative aspect-[16/9] w-full overflow-hidden rounded-lg border-2 border-white md:aspect-[16/9] ${
+          className ?? ''
+        }`
+      }
+    >
       <img src={curr.src} alt={curr.alt} className="h-full w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
       <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
