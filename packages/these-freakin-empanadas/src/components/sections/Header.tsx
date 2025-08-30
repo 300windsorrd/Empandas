@@ -55,14 +55,18 @@ export function Header({ restaurantName, doordashUrl, grubhubUrl }: Props) {
             className="h-8 w-auto"
           />
           <VariableProximity
-            className="text-lg font-semibold hidden sm:inline"
+            className="text-lg hidden sm:inline"
             label={restaurantName}
             containerRef={brandContainerRef}
             // Use variable font axis available in Source Sans 3 (loaded globally)
-            fromFontVariationSettings="'wght' 500"
-            toFontVariationSettings="'wght' 800"
+            fromFontVariationSettings="'wght' 400"
+            toFontVariationSettings="'wght' 900"
             radius={80}
             falloff="exponential"
+            style={{
+              fontFamily:
+                "var(--font-source), var(--font-lato), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif",
+            }}
             aria-label={restaurantName}
           />
         </a>

@@ -179,7 +179,7 @@ export const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityPr
                     letterRefs.current[currentLetterIndex] = el;
                   }}
                   style={{
-                    display: "inline-block",
+                    display: "inline",
                     fontVariationSettings: interpolatedSettingsRef.current[currentLetterIndex],
                   }}
                   aria-hidden="true"
@@ -200,4 +200,3 @@ export const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityPr
 VariableProximity.displayName = "VariableProximity";
 
 export default VariableProximity;
-
