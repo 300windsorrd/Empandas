@@ -1,0 +1,214 @@
+[
+  {
+    "id": "classic-beef",
+    "name": "Classic Beef",
+    "category": "Savory Empanadas",
+    "prices": { "doordash": 6.0 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "tags": ["Most-Loved"],
+    "image": "/public/images/menu/classic-beef.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "classic-chicken",
+    "name": "Classic Chicken",
+    "category": "Savory Empanadas",
+    "prices": { "doordash": 6.0 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/classic-chicken.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "buffalo-chicken",
+    "name": "Buffalo Chicken",
+    "category": "Savory Empanadas",
+    "prices": { "doordash": 6.0 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "tags": ["Spicy"],
+    "image": "/public/images/menu/buffalo-chicken.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "spinach-artichoke",
+    "name": "Spinach Artichoke",
+    "category": "Savory Empanadas",
+    "prices": { "doordash": 6.0 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "tags": ["New"],
+    "image": "/public/images/menu/spinach-artichoke.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "cheeseburger",
+    "name": "Cheeseburger",
+    "category": "Savory Empanadas",
+    "prices": { "doordash": 6.0 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/cheeseburger.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "dessert-cannoli",
+    "name": "Cannoli",
+    "category": "Dessert Empanadas",
+    "prices": { "grubhub": 5.5 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/dessert-cannoli.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "dessert-oreo-cheesecake",
+    "name": "Oreo Cheesecake",
+    "category": "Dessert Empanadas",
+    "prices": { "grubhub": 5.5 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/dessert-oreo.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "dessert-reeses",
+    "name": "Reese’s Butter Cup Cheesecake",
+    "category": "Dessert Empanadas",
+    "prices": { "grubhub": 5.5 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/dessert-reeses.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "dessert-apple-pie",
+    "name": "Apple Pie",
+    "category": "Dessert Empanadas",
+    "prices": { "grubhub": 5.5 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/dessert-apple-pie.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "combo-2-fries",
+    "name": "2 Empanadas & Fries",
+    "category": "Combos",
+    "prices": { "doordash": 17.95 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/combo-2-fries.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "combo-3-fries",
+    "name": "3 Empanadas & Fries",
+    "category": "Combos",
+    "prices": { "doordash": 20.79 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/combo-3-fries.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "munchie-pack-6",
+    "name": "Munchie Pack (6)",
+    "category": "Combos",
+    "prices": { "doordash": 34.70 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/munchie-pack-6.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "family-pack-12",
+    "name": "Family Pack (12)",
+    "category": "Combos",
+    "prices": { "doordash": 65.80 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/family-pack-12.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "cuban-sandwich",
+    "name": "Cuban Sandwich",
+    "category": "Sandwiches",
+    "prices": {},
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/cuban-sandwich.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "sweet-potato-fries",
+    "name": "Sweet Potato Fries",
+    "category": "Sides",
+    "prices": { "doordash": 6.24, "grubhub": 6.24 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/sweet-potato-fries.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  },
+  {
+    "id": "tater-tots",
+    "name": "Tater Tots",
+    "category": "Sides",
+    "prices": { "doordash": 7.20, "grubhub": 7.20 },
+    "orderLinks": {
+      "doordash": "https://www.doordash.com/store/these-freakin-empanadas-and-more/",
+      "grubhub": "https://www.grubhub.com/restaurant/these-freakin-empanadas-and-more/"
+    },
+    "image": "/public/images/menu/tater-tots.jpg",
+    "isActive": true,
+    "lastChecked": "2025-08-25"
+  }
+]
+

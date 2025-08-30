@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model MenuItem {
+  id          String   @id
+  name        String
+  description String?
+  category    String
+  pricesJson      String
+  orderLinksJson  String
+  tagsJson        String
+  image       String?
+  isActive    Boolean  @default(true)
+  lastChecked DateTime?
+}
+
+model MenuItemDraft {
+  id          String   @id
+  name        String
+  description String?
+  category    String
+  pricesJson      String
+  orderLinksJson  String
+  tagsJson        String
+  image       String?
+  isActive    Boolean  @default(true)
+  lastChecked DateTime?
+}
+
+model HeroSlide {
+  id          String  @id @default(cuid())
+  src         String
+  alt         String
+  attribution String?
+  position    Int
+}
+
+model Settings {
+  id               Int     @id @default(1)
+  address          String
+  phone            String
+  hoursJson            String
+  platformBaseUrlsJson String
+  ctaTogglesJson       String
+}
+
+model User {
+  id           String @id @default(cuid())
+  email        String @unique
+  passwordHash String
+  role         String  @default("admin")
+  failedLoginCount Int    @default(0)
+  lockoutUntil     DateTime?
+  totpSecret       String?
+  totpEnabled      Boolean @default(false)
+}
+
+model ChangeLog {
+  id        String   @id @default(cuid())
+  entity    String
+  entityId  String
+  action    String
+  beforeJson    String?
+  afterJson     String?
+  userId    String
+  createdAt DateTime @default(now())
+}

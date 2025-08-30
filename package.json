@@ -1,0 +1,35 @@
+{
+  "name": "tfe-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@8.15.0",
+  "scripts": {
+    "dev": "pnpm --filter ./apps/starter dev",
+    "build": "pnpm -r typecheck && pnpm -r lint && pnpm -r test && pnpm -r audit && pnpm -r build",
+    "lint": "eslint .",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "audit": "tsx scripts/audit-data.ts && tsx scripts/audit-brand-colors.ts",
+    "lhci": "lhci autorun",
+    "seed": "tsx apps/starter/scripts/seed.ts",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react": "^7.34.1",
+    "husky": "^9.0.11",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.2",
+    "vitest": "^1.5.0",
+    "zod": "^3.22.4",
+    "@lhci/cli": "^0.12.0"
+  },
+  "dependencies": {
+    "eslint-plugin-tfe": "workspace:*"
+  }
+}

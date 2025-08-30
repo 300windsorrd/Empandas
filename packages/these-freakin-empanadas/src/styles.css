@@ -1,0 +1,19 @@
+:root {
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-brandRed: #fd0302;
+  --color-accent: #02fcfd; /* Use extremely sparingly: focus ring, tiny pills, micro-icons */
+}
+
+/* Focus ring utility: 2px accent outline */
+.tfe-focus-ring:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Basic typography defaults */
+body {
+  color: var(--color-secondary);
+  background: var(--color-primary);
+}
+
