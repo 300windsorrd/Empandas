@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "these-freakin-empanadas": [
-        "../../packages/these-freakin-empanadas/src"
+        "../../packages/these-freakin-empanadas/dist"
       ],
       "@/*": [
         "./*"
