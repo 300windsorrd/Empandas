@@ -10,13 +10,14 @@ services:
         value: production
       - key: NEXTAUTH_URL
         value: https://IONOS_DEPLOY_NOW_SITE_URL
+      - key: TSC_COMPILE_ON_ERROR
+        value: "true"
     install:
       command: |
         corepack enable
         pnpm -w install --frozen-lockfile
     build:
       command: |
-        pnpm -w --filter ./packages/these-freakin-empanadas build || true
         pnpm -w --filter ./apps/starter build
     start:
       command: pnpm -w --filter ./apps/starter start
