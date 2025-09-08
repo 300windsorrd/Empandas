@@ -14,7 +14,8 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: apps/starter/.next
+  # Upload the whole repo so runtime has package.json and workspace
+  DEPLOYMENT_FOLDER: .
 
 jobs:
 # Please do not rename this job
@@ -27,18 +28,26 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Setup Node
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Setup Node 20
         uses: actions/setup-node@v4
         with:
-          node-version: v22.x
+          node-version: 20
+          cache: 'pnpm'
 
-      - name: Build Node assets
+      - name: Install and build workspace
         env:
           CI: true
           SITE_URL: ${{ inputs.site-url }}
         run: |
-          npm install --global pnpm
-          pnpm install
+          corepack enable
+          pnpm -w install --frozen-lockfile
+          pnpm -w --filter ./packages/these-freakin-empanadas build || true
+          pnpm -w --filter ./apps/starter build
 
 # Please do not touch the following action
       - name: Store deployment content

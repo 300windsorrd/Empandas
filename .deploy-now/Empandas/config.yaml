@@ -1,0 +1,23 @@
+version: "1"
+project:
+  name: Empandas
+services:
+  - name: web
+    type: node
+    node: "20"
+    env:
+      - key: NODE_ENV
+        value: production
+      - key: NEXTAUTH_URL
+        value: https://IONOS_DEPLOY_NOW_SITE_URL
+    install:
+      command: |
+        corepack enable
+        pnpm -w install --frozen-lockfile
+    build:
+      command: |
+        pnpm -w --filter ./packages/these-freakin-empanadas build || true
+        pnpm -w --filter ./apps/starter build
+    start:
+      command: pnpm -w --filter ./apps/starter start
+    working-directory: "."
