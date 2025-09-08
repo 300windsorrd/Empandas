@@ -1,5 +1,5 @@
 #!/usr/bin/env -S node --enable-source-maps
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { z } from 'zod';
 
@@ -37,8 +37,22 @@ function fail(msg: string): never {
 }
 
 try {
-  const menuPath = join(process.cwd(), 'data', 'menu.json');
-  const heroPath = join(process.cwd(), 'data', 'hero.json');
+  // Support both `data/` and `public/data/` layouts
+  const candidates = [
+    join(process.cwd(), 'data'),
+    join(process.cwd(), 'public', 'data')
+  ];
+  const dataDir = candidates.find((d) => existsSync(join(d, 'menu.json')) && existsSync(join(d, 'hero.json')));
+  if (!dataDir) {
+    fail(
+      `Could not locate data directory. Checked: ${candidates
+        .map((d) => `'${d}'`)
+        .join(', ')}. Ensure menu.json and hero.json exist.`
+    );
+  }
+
+  const menuPath = join(dataDir!, 'menu.json');
+  const heroPath = join(dataDir!, 'hero.json');
   const menuRaw = readFileSync(menuPath, 'utf8');
   const heroRaw = readFileSync(heroPath, 'utf8');
   const menu = JSON.parse(menuRaw);
@@ -80,4 +94,3 @@ try {
 } catch (err: any) {
   fail(err?.message ?? String(err));
 }
-

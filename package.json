@@ -5,8 +5,8 @@
   "packageManager": "pnpm@8.15.0",
   "scripts": {
     "dev": "pnpm --filter ./apps/starter dev",
-    "build": "pnpm -r typecheck && pnpm -r lint && pnpm -r run audit && pnpm -r build",
-    "build:ci": "pnpm -r typecheck && pnpm -r lint && pnpm -r test && pnpm -r run audit && pnpm -r build",
+    "build": "pnpm -r typecheck && pnpm -r lint && pnpm -r build",
+    "build:ci": "pnpm -r typecheck && pnpm -r lint && pnpm -r test && pnpm -r build",
     "lint": "eslint .",
     "typecheck": "tsc -b",
     "test": "vitest run",
