@@ -19,7 +19,7 @@
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
-    "audit": "node ../../scripts/audit-brand-colors.ts"
+    "audit": "tsx ../../scripts/audit-brand-colors.ts"
   },
   "peerDependencies": {
     "next": "^14.0.0",

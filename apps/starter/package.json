@@ -8,7 +8,7 @@
     "start": "next start -p ${PORT:-3000}",
     "lint": "eslint .",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run",
+    "test": "vitest run --exclude e2e/**",
     "audit": "tsx ../../scripts/audit-data.ts && tsx ../../scripts/audit-brand-colors.ts",
     "seed": "tsx ./scripts/seed.ts",
     "prisma:generate": "prisma generate",

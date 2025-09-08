@@ -4,6 +4,12 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
+    exclude: [
+      '**/e2e/**',
+      '**/*.e2e.*',
+      '**/node_modules/**',
+      '**/.next/**',
+    ],
     coverage: {
       provider: 'v8',
       enabled: true,
