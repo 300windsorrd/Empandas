@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import { prisma } from '@/src/lib/db';
 import AdminClient from './ui/AdminClient';
 
