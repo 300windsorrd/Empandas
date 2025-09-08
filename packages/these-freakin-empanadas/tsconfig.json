@@ -4,9 +4,10 @@
     "outDir": "dist",
     "rootDir": "src",
     "declaration": true,
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["react", "react-dom"]
   },
   "include": ["src/**/*"],
   "exclude": ["dist", "node_modules"]
 }
-

@@ -1,4 +1,5 @@
 import NextAuth, { type NextAuthConfig } from 'next-auth';
+import type { NextAuthResult } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { prisma } from './db';
@@ -60,4 +61,8 @@ export const authConfig = {
   pages: { signIn: '/login' }
 } satisfies NextAuthConfig;
 
-export const { auth, handlers, signIn, signOut } = NextAuth(authConfig);
+const _auth = NextAuth(authConfig);
+export const handlers: NextAuthResult["handlers"] = _auth.handlers;
+export const auth: NextAuthResult["auth"] = _auth.auth;
+export const signIn: NextAuthResult["signIn"] = _auth.signIn;
+export const signOut: NextAuthResult["signOut"] = _auth.signOut;

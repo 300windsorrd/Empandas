@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "apps/starter" },
+    { "path": "packages/these-freakin-empanadas" }
+  ],
+  "extends": "./tsconfig.base.json"
+}
+

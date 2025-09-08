@@ -13,9 +13,10 @@ export const metadata: Metadata = {
   },
   metadataBase: process.env.NEXTAUTH_URL ? new URL(process.env.NEXTAUTH_URL) : undefined,
   alternates: { canonical: '/' },
-  other: {
-    'X-Robots-Tag': process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production' ? 'noindex' : undefined
-  }
+  other:
+    process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production'
+      ? { 'X-Robots-Tag': 'noindex' }
+      : {}
 };
 
 const lato = Lato({ subsets: ['latin'], weight: ['400','700'], display: 'swap', variable: '--font-lato' });

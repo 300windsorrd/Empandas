@@ -1,5 +1,4 @@
 "use client";
-import { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from 'these-freakin-empanadas';
 import MenuTab from './MenuTab';
 import CarouselTab from './CarouselTab';
@@ -20,15 +19,14 @@ export default function AdminClient({ menu, drafts, heroes, settings, changes }:
     orderLinks: JSON.parse(m.orderLinksJson || '{}'),
     tags: JSON.parse(m.tagsJson || '[]')
   }));
-  const [tab, setTab] = useState('menu');
   return (
-    <Tabs defaultValue={tab}>
+    <Tabs defaultValue={'menu'}>
       <TabsList>
-        <TabsTrigger value="menu" onClick={() => setTab('menu')}>Menu</TabsTrigger>
-        <TabsTrigger value="carousel" onClick={() => setTab('carousel')}>Carousel</TabsTrigger>
-        <TabsTrigger value="settings" onClick={() => setTab('settings')}>Settings</TabsTrigger>
-        <TabsTrigger value="publish" onClick={() => setTab('publish')}>Publishing</TabsTrigger>
-        <TabsTrigger value="changelog" onClick={() => setTab('changelog')}>Change Log</TabsTrigger>
+        <TabsTrigger value="menu">Menu</TabsTrigger>
+        <TabsTrigger value="carousel">Carousel</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
+        <TabsTrigger value="publish">Publishing</TabsTrigger>
+        <TabsTrigger value="changelog">Change Log</TabsTrigger>
       </TabsList>
       <TabsContent value="menu"><MenuTab initialMenu={normMenu} initialDrafts={normDrafts} /></TabsContent>
       <TabsContent value="carousel"><CarouselTab initialHeroes={heroes} /></TabsContent>
