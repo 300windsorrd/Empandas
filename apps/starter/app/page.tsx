@@ -1,7 +1,7 @@
 import TheseFreakinEmpanadas from 'these-freakin-empanadas';
 import heroImages from '../public/data/hero.json';
 import menuData from '../public/data/menu.json';
-import { RestaurantJSONLD, MenuJSONLD } from '@/src/lib/seo';
+import { MenuJSONLD } from '@/src/lib/seo';
 
 export default async function HomePage() {
   // Use static data; no DB/auth required

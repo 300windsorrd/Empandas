@@ -177,7 +177,6 @@ export async function publishDrafts() {
   const changes: any[] = [];
   for (const d of drafts) {
     const before = await prisma.menuItem.findUnique({ where: { id: d.id } });
-    const after = d;
     await prisma.menuItem.upsert({
       where: { id: d.id },
       update: {

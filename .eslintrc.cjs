@@ -4,7 +4,7 @@ module.exports = {
   env: { es2022: true, node: true, browser: true },
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'import', 'tfe'],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'tfe'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',

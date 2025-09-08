@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createWriteStream, mkdirSync } from 'node:fs';
+import { mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import { randomUUID } from 'node:crypto';
@@ -27,4 +27,3 @@ export async function POST(req: NextRequest) {
   await sharp(webp).toFile(full);
   return NextResponse.json({ path: `/uploads/${name}`, width: meta.width, height: meta.height });
 }
-

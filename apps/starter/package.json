@@ -26,6 +26,7 @@
     "these-freakin-empanadas": "workspace:*"
   },
   "devDependencies": {
+    "eslint-config-next": "14.2.4",
     "@playwright/test": "^1.46.1",
     "@axe-core/playwright": "^4.9.1",
     "@types/react": "18.2.66",

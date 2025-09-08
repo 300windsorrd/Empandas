@@ -38,6 +38,7 @@
     ".next",
     "dist",
     "src/server/actions/**/*",
-    "app/(admin)/**/*"
+    "app/(admin)/**/*",
+    "scripts/**/*"
   ]
 }

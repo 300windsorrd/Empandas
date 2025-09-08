@@ -1,6 +1,5 @@
 "use server";
 import { revalidateTag } from 'next/cache';
-import { z } from 'zod';
 import { MenuItemSchema } from '../../lib/validators';
 
 export async function upsertMenuItem(input: unknown) {
@@ -10,4 +9,3 @@ export async function upsertMenuItem(input: unknown) {
   revalidateTag('menu');
   return { ok: true } as const;
 }
-
