@@ -56,6 +56,24 @@ jobs:
           version: ${{ inputs.version }}
           action: download
 
+      - name: Inspect downloaded deployment (debug)
+        run: |
+          echo "Workspace: $GITHUB_WORKSPACE"
+          echo "Deployment tree:" && ls -la deployment || true
+          for f in deployment/config.yaml deployment/.deploy-now/config.yaml; do
+            if [ -f "$f" ]; then
+              echo "--- $f (first 20 lines) ---"; head -n 20 "$f"; echo;
+            fi
+          done
+
+      - name: Patch deployment config version to v2 (compat)
+        run: |
+          for f in deployment/config.yaml deployment/.deploy-now/config.yaml; do
+            if [ -f "$f" ]; then
+              sed -i -e 's/^version:.*/version: "2"/' "$f" || true
+            fi
+          done
+
       - name: Fetch deployment info
         uses: ionos-deploy-now/project-action@v1
         id: deployment
