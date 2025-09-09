@@ -23,7 +23,7 @@ jobs:
       - run: pnpm lint
       - run: pnpm test -- --coverage
       - run: pnpm audit
-      - run: pnpm build
+      - run: pnpm --filter ./apps/starter build
       - name: Install Playwright Browsers
         run: pnpm -C apps/starter exec playwright install --with-deps
       - name: Run E2E tests
