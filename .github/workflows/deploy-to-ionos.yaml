@@ -66,11 +66,11 @@ jobs:
             fi
           done
 
-      - name: Patch deployment config version to v2 (compat)
+      - name: Patch deployment config version to v1 (compat)
         run: |
           for f in deployment/config.yaml deployment/.deploy-now/config.yaml; do
             if [ -f "$f" ]; then
-              sed -i -e 's/^version:.*/version: "2"/' "$f" || true
+              sed -i -e 's/^version:.*/version: "1"/' "$f" || true
             fi
           done
 
@@ -106,7 +106,7 @@ jobs:
         run: echo SSH_USERNAME_SECRET=IONOS_DEPLOYMENT_`echo ${{ matrix.deployment-id }} | tr '[:lower:]' '[:upper:]' | tr '-' '_'`_SSH_USERNAME >> $GITHUB_ENV
 
       - name: Deploy to IONOS
-        uses: ionos-deploy-now/deploy-to-ionos-action@v2
+        uses: ionos-deploy-now/deploy-to-ionos-action@v1
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
