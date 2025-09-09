@@ -17,10 +17,10 @@ on:
         required: true
         type: string
       deployment-ids:
-        require: true
+        required: true
         type: string
   push:
-    path:
+    paths:
       - ./.github/workflows/deploy-to-ionos.yaml
 
 concurrency: ${{ github.ref }}
@@ -79,8 +79,9 @@ jobs:
 
       - name: Render real site-url to all files
         run: |
-          for file in `grep -rl 'https://IONOS_DEPLOY_NOW_SITE_URL' .`; do
-            sed -i $file -e 's|https://IONOS_DEPLOY_NOW_SITE_URL|${{ fromJson(steps.deployment.outputs.info).site-url }}|g'
+          site_url="${{ fromJson(steps.deployment.outputs.info)['site-url'] }}"
+          for file in $(grep -rl 'https://IONOS_DEPLOY_NOW_SITE_URL' . || true); do
+            sed -i -e "s|https://IONOS_DEPLOY_NOW_SITE_URL|${site_url}|g" "$file"
           done
 
       - name: Render SSH user secret name
