@@ -66,11 +66,11 @@ jobs:
             fi
           done
 
-      - name: Patch deployment config version to v1 (compat)
+      - name: Patch deployment config version to v1.0 (compat)
         run: |
           for f in deployment/config.yaml deployment/.deploy-now/config.yaml; do
             if [ -f "$f" ]; then
-              sed -i -e 's/^version:.*/version: "1"/' "$f" || true
+              sed -i -e 's/^version:.*/version: "1.0"/' "$f" || true
             fi
           done
 
