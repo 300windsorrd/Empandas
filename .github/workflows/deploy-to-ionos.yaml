@@ -33,16 +33,16 @@ jobs:
       actions: read
     strategy:
       matrix:
-        deployment-id: ${{ fromJson(inputs.deployment-ids) }}
+        deployment-id: ${{ fromJSON(inputs['deployment-ids']) }}
     steps:
       - name: Update deployment status
         uses: ionos-deploy-now/project-action@v1
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: ${{ inputs.project-id }}
-          branch-id: ${{ inputs.branch-id }}
-          deployment-id: ${{ matrix.deployment-id }}
+          project-id: ${{ inputs['project-id'] }}
+          branch-id: ${{ inputs['branch-id'] }}
+          deployment-id: ${{ matrix['deployment-id'] }}
           action: update-status
           status: in_progress
 
@@ -51,9 +51,9 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: ${{ inputs.project-id }}
-          branch-id: ${{ inputs.branch-id }}
-          version: ${{ inputs.version }}
+          project-id: ${{ inputs['project-id'] }}
+          branch-id: ${{ inputs['branch-id'] }}
+          version: ${{ inputs['version'] }}
           action: download
 
       - name: Inspect downloaded deployment (debug)
@@ -80,39 +80,39 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: ${{ inputs.project-id }}
-          branch-id: ${{ inputs.branch-id }}
-          deployment-id: ${{ matrix.deployment-id }}
+          project-id: ${{ inputs['project-id'] }}
+          branch-id: ${{ inputs['branch-id'] }}
+          deployment-id: ${{ matrix['deployment-id'] }}
           action: retrieve-info
 
       - name: Render templates
         uses: ionos-deploy-now/template-renderer-action@v2
         id: template
         with:
-          deployment-id: ${{ matrix.deployment-id }}
-          data: "[${{ steps.deployment.outputs.template-variables }}, ${{ toJson(secrets) }}]"
+          deployment-id: ${{ matrix['deployment-id'] }}
+          data: "[${{ steps.deployment.outputs['template-variables'] }}, ${{ toJSON(secrets) }}]"
           input-directory: deployment
           output-directory: deployment
           intermediate-data-file: deployment/.template-renderer-data
 
       - name: Render real site-url to all files
         run: |
-          site_url="${{ fromJson(steps.deployment.outputs.info)['site-url'] }}"
+          site_url="${{ fromJSON(steps.deployment.outputs.info)['site-url'] }}"
           for file in $(grep -rl 'https://IONOS_DEPLOY_NOW_SITE_URL' . || true); do
             sed -i -e "s|https://IONOS_DEPLOY_NOW_SITE_URL|${site_url}|g" "$file"
           done
 
       - name: Render SSH user secret name
-        run: echo SSH_USERNAME_SECRET=IONOS_DEPLOYMENT_`echo ${{ matrix.deployment-id }} | tr '[:lower:]' '[:upper:]' | tr '-' '_'`_SSH_USERNAME >> $GITHUB_ENV
+        run: echo SSH_USERNAME_SECRET=IONOS_DEPLOYMENT_`echo ${{ matrix['deployment-id'] }} | tr '[:lower:]' '[:upper:]' | tr '-' '_'`_SSH_USERNAME >> $GITHUB_ENV
 
       - name: Deploy to IONOS
         uses: ionos-deploy-now/deploy-to-ionos-action@v1
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: ${{ inputs.project-id }}
-          branch-id: ${{ inputs.branch-id }}
-          deployment-id: ${{ matrix.deployment-id }}
+          project-id: ${{ inputs['project-id'] }}
+          branch-id: ${{ inputs['branch-id'] }}
+          deployment-id: ${{ matrix['deployment-id'] }}
           deployment-info: ${{ steps.deployment.outputs.info }}
           ssh-user: ${{ secrets[env.SSH_USERNAME_SECRET] }}
           ssh-key: ${{ secrets.IONOS_SSH_KEY }}
@@ -123,9 +123,9 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: ${{ inputs.project-id }}
-          branch-id: ${{ inputs.branch-id }}
-          deployment-id: ${{ matrix.deployment-id }}
+          project-id: ${{ inputs['project-id'] }}
+          branch-id: ${{ inputs['branch-id'] }}
+          deployment-id: ${{ matrix['deployment-id'] }}
           action: update-status
           status: ${{ job.status }}
 
@@ -139,6 +139,6 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: ${{ inputs.project-id }}
-          branch-id: ${{ inputs.branch-id }}
+          project-id: ${{ inputs['project-id'] }}
+          branch-id: ${{ inputs['branch-id'] }}
           action: set-deployments-finished
