@@ -7,7 +7,7 @@
     "dev": "pnpm --filter ./apps/starter dev",
     "build": "pnpm -r typecheck && pnpm -r lint && pnpm --filter ./packages/these-freakin-empanadas build && pnpm --filter ./apps/starter build",
     "build:ci": "pnpm -r typecheck && pnpm -r lint && pnpm -r test && pnpm --filter ./packages/these-freakin-empanadas build && pnpm --filter ./apps/starter build",
-    "lint": "eslint .",
+    "lint": "pnpm -r lint",
     "typecheck": "tsc -b",
     "test": "vitest run",
     "audit": "tsx scripts/audit-data.ts && tsx scripts/audit-brand-colors.ts",
